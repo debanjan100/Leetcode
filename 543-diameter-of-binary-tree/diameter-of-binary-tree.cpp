@@ -9,22 +9,31 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    int diameterOfBinaryTree(TreeNode* root) {
-        if (!root) return 0;
+    int maxpath;
+    int solve(TreeNode*root){
+        if(root==NULL){
+                return 0;
+        }
 
-        int leftHeight = maxHeight(root->left);  
-        int rightHeight = maxHeight(root->right);
-        int diameter = leftHeight + rightHeight;
-        int sub = max(diameterOfBinaryTree(root->left),
-                      diameterOfBinaryTree(root->right));
-        return max(diameter, sub);
+        int l=solve(root->left);
+        int r=solve(root->right);
+
+        int curved=l+r+1;
+        int anyone=1+max(l,r);
+
+        maxpath=max({maxpath,curved,anyone});
+
+        return anyone;
+
     }
 
-    int maxHeight(TreeNode* root) {
-        if (!root) return 0;
-        return 1 + max(maxHeight(root->left), maxHeight(root->right));
+    int diameterOfBinaryTree(TreeNode* root) {
+        
+        maxpath=INT_MIN;
+        solve(root);
+
+        return maxpath-1;
     }
 };
