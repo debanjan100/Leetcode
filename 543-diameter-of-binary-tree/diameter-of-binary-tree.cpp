@@ -15,7 +15,7 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
         if (!root) return 0;
 
-        int leftHeight = maxHeight(root->left);
+        int leftHeight = maxHeight(root->left);  
         int rightHeight = maxHeight(root->right);
         int diameter = leftHeight + rightHeight;
         int sub = max(diameterOfBinaryTree(root->left),
