@@ -9,5 +9,6 @@ class Solution:
         # Check if values are equal and recursively check left and right subtrees
         if p.val == q.val:
             return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        else:
         # Values are not equal, they are not identical
-        return False
+            return False
