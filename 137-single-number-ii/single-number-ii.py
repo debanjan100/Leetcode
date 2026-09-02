@@ -1,12 +1,10 @@
 class Solution:
     def singleNumber(self, nums):
-        count = defaultdict(int)
-        
-        for x in nums:
-            count[x] += 1
+        ones, twos = 0, 0
 
-        for x, freq in count.items():
-            if freq == 1:
-                return x
-        
-        return -1
+        for num in nums:
+            # Update ones and twos
+            ones = (ones ^ num) & ~twos
+            twos = (twos ^ num) & ~ones
+
+        return ones 
