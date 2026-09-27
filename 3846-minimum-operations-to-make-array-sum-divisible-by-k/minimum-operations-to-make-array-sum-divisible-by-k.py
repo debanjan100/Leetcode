@@ -1,10 +1,10 @@
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
-        sum=0
+        total=0
         
         for i in range (len(nums)):
-            sum += nums[i]
+           total += nums[i]
 
-        return sum % k
+        return total % k
 
         
