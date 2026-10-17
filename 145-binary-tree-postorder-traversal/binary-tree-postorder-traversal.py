@@ -4,7 +4,7 @@ class Solution:
         
         def postorder(root):
             if not root:
-                return
+                return []
             
             postorder(root.left)
             postorder(root.right)
@@ -12,3 +12,4 @@ class Solution:
 
         postorder(root)
         return res
+        
