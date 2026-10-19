@@ -1,8 +1,4 @@
-class Solution:
-    def targetIndices(self, nums: list[int], target: int) -> list[int]:
-        res = []
+class Solution(object):
+    def targetIndices(self, nums, target):
         nums.sort()
-        for i, val in enumerate(nums): 
-            if val == target:           
-                res.append(i)         
-        return res                      
+        return [i for i in range(len(nums)) if nums[i]==target]
