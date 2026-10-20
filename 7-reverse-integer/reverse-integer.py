@@ -1,12 +1,20 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        res = 0
-        if x < 0:
-            res = int(str(x)[1:][::-1]) * -1
-        else:
-            res = int(str(x)[::-1])
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
         
-        if res > 2 ** 31 - 1 or res < -2 ** 31:
-            return 0
+        ans = 0
+        sign = 1 if x > 0 else -1
+        x = abs(x)  # work with positive number
         
-        return res
+        while x != 0:
+            rem = x % 10
+            x //= 10
+            
+            # Check overflow BEFORE multiplying
+            if ans > (INT_MAX // 10) or (ans == INT_MAX // 10 and rem > 7):
+                return 0
+            
+            ans = ans * 10 + rem
+        
+        return sign * ans
