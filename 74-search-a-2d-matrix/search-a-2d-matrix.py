@@ -1,20 +1,21 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:        
-        rows, cols = len(matrix), len(matrix[0])
-        left, right = 0, rows * cols - 1
-
-        while left <= right:
-            mid = (left + right) // 2
-            row, col = mid // cols, mid % cols
-            guess = matrix[row][col]
-
-            if guess == target:
-                  return True
-            elif guess < target:
-                left = mid + 1
-            else:
-                right = mid - 1
-
-        return False
-
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix or not matrix[0]:
+            return False
+            
+        m_rows, n_cols = len(matrix), len(matrix[0])
+        low_ptr, high_ptr = 0, (m_rows * n_cols) - 1
         
+        while low_ptr <= high_ptr:
+            middle_idx = low_ptr + (high_ptr - low_ptr) // 2
+            curr_row, curr_col = divmod(middle_idx, n_cols)
+            current_val = matrix[curr_row][curr_col]
+            
+            if current_val == target:
+                return True
+            elif current_val < target:
+                low_ptr = middle_idx + 1
+            else:
+                high_ptr = middle_idx - 1
+                
+        return False
