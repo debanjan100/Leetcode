@@ -1,3 +1,5 @@
+import math
+
 class Solution:
     def climbStairs(self, n: int, costs: list[int]) -> int:
         costs = [0] + costs
