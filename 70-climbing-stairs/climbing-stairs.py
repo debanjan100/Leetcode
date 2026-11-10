@@ -1,12 +1,11 @@
 from functools import cache
 
 class Solution:
+    @cache  # <-- Put the cache right on top of the main function!
     def climbStairs(self, n: int) -> int:
-        
-        @cache
-        def helper(stairs: int) -> int:
-            if stairs <= 1:
-                return 1
-            return helper(stairs - 1) + helper(stairs - 2)
+        # Base cases
+        if n <= 1:
+            return 1
             
-        return helper(n)
+        # Recursive step calling itself directly
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
