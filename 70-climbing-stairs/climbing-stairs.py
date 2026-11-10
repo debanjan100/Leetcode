@@ -1,10 +1,12 @@
+from functools import cache
+
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n <= 3:
-            return n
-        first, second = 2, 3
-        for i in range(4, n + 1):
-            third = first + second
-            first = second
-            second = third
-        return second
+        
+        @cache
+        def helper(stairs: int) -> int:
+            if stairs <= 1:
+                return 1
+            return helper(stairs - 1) + helper(stairs - 2)
+            
+        return helper(n)
