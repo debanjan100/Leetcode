@@ -5,7 +5,7 @@ class Solution:
             if letter not in pal:
                 pal.add(letter)
             else:
-                pal.remove(letter)
+                pal.discard(letter)
 
         if len(pal) != 0:
             return len(s) - len(pal) +1
