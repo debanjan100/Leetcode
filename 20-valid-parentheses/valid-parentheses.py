@@ -3,11 +3,11 @@ class Solution:
         mapping = {')': '(', '}': '{', ']': '['}
         stack = []
 
-        for char in s:
-            if char in mapping.values():
-                stack.append(char)
-            elif char in mapping:
-                if not stack or mapping[char] != stack.pop():
+        for ch in s:
+            if ch in mapping.values():
+                stack.append(ch)
+            elif ch in mapping:
+                if not stack or mapping[ch] != stack.pop():
                     return False
         return not stack
         
