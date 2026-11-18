@@ -1,7 +1,19 @@
 class Solution:
     def findDuplicate(self, nums: list[int]) -> int:
-        nums.sort()
-        for i in range(len(nums)):
-            if nums[i-1] == nums[i]:
-                return nums[i]
+        # Phase 1: Find the intersection point inside the cycle
+        slow = 0
+        fast = 0
         
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+        
+        # Phase 2: Find the entrance to the cycle (the duplicate number)
+        slow2 = 0
+        while True:
+            slow = nums[slow]
+            slow2 = nums[slow2]
+            if slow == slow2:
+                return slow
