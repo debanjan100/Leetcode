@@ -23,5 +23,5 @@ class Solution(object):
                     five_dollers -= 3
                 else:
                     return False
-            print(five_dollers, ten_dollers)
+            
         return True
