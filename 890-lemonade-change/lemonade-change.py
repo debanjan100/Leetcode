@@ -1,5 +1,5 @@
 class Solution(object):
-    def lemonadeChange(self, bills):
+    def lemonadeChange(self, bills)->bool:
         if bills[0] != 5:
             return False
         
